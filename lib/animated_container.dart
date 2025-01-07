@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
-class AnimatedContainerExample extends StatefulWidget{
+class AnimatedContainerExample extends StatefulWidget {
   final Duration duration;
   final Curve curve;
-  const AnimatedContainerExample({super.key, required this.duration, required this.curve});
+  const AnimatedContainerExample(
+      {super.key, required this.duration, required this.curve});
 
   @override
-  State<AnimatedContainerExample> createState() => AnimatedContainerExampleState();
+  State<AnimatedContainerExample> createState() =>
+      AnimatedContainerExampleState();
 }
 
-class AnimatedContainerExampleState extends State<AnimatedContainerExample>{
+class AnimatedContainerExampleState extends State<AnimatedContainerExample> {
   bool isTriggered = false;
   int index = 0;
 
@@ -24,21 +26,23 @@ class AnimatedContainerExampleState extends State<AnimatedContainerExample>{
   ];
 
   @override
-  Widget build(BuildContext context){
-    return GestureDetector(
-      onTap: () => setState((){
-        // isTriggered = !isTriggered;
-        index = (index + 1) % colors.length;
-      }),
-      child: AnimatedContainer(
-        width: 150,
-        height: 150,
-        alignment: Alignment.center,
-        duration: widget.duration,
-        curve: widget.curve,
-        // color: isTriggered ? Colors.green : Colors.blue
-        color: colors[index],
-      )
+  Widget build(BuildContext context) {
+    return Center(
+      child: GestureDetector(
+        onTap: () => setState(() {
+          isTriggered = !isTriggered;
+          index = (index + 1) % colors.length;
+        }),
+        child: AnimatedContainer(
+          width: 150,
+          height: 150,
+          duration: widget.duration,
+          curve: widget.curve,
+          color: colors[index],
+          alignment: isTriggered ? Alignment.topRight : Alignment.bottomLeft,
+          child: FlutterLogo(size: 75),
+        ),
+      ),
     );
   }
 }

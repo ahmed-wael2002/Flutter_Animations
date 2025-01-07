@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:untitled2/animated_crossfade.dart';
+import 'package:untitled2/animated_list.dart';
 
 import 'animated_align.dart';
 import 'animated_builder.dart';
 import 'animated_container.dart';
+import 'animated_text.dart';
+import 'animated_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +25,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(title: Text('Animation Example')),
-        body: AnimatedContainerExample(
+        body: AnimatedWidgetExample(
             curve: Curves.easeInOut,
             duration: Duration(seconds: 1)
         ),
